@@ -150,8 +150,6 @@ The AI Terminal includes a modern web-based interface built with React Next.js, 
 
 2. **Run the setup script**
    ```bash
-   # For Windows
-   ..\scripts\setup_frontend.bat
 
    # For Linux/macOS
    ../scripts/setup_frontend.sh

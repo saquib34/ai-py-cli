@@ -250,7 +250,19 @@ Commands:
   git clone https://github.com/saquib34/ai-py-cli.git
   cd ai-py-cli
 
-Then follow the setup instructions in README.md`;
+Backend Setup:
+  pip install -r requirements.txt
+  echo "GEMINI_API_KEY=your_key_here" > .env
+
+
+Usage:
+  # Terminal 1: Start backend daemon
+  python main.py daemon
+
+  # Terminal 2: Start CLI
+  python main.py
+
+  # Terminal 3: Open http://localhost:3000 for web interface`;
 
       default:
         if (cmd.startsWith('echo ')) {
