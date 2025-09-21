@@ -5,7 +5,8 @@ A cross-platform AI-augmented terminal with intelligent command suggestions, nat
 ## ✨ Features
 
 - **🤖 AI-Powered Commands**: Natural language to shell command translation using Google Gemini
-- **📚 Smart Autosuggestion**: Database-driven command completion with history prioritization
+- **� System Monitoring**: Built-in commands for CPU, memory, processes, disk, and network monitoring
+- **�📚 Smart Autosuggestion**: Database-driven command completion with history prioritization
 - **🔄 Cross-Platform**: Works on Windows, Linux, and macOS
 - **💾 Persistent History**: SQLite database stores command history and execution results
 - **🛡️ Safety Checks**: AI validates commands for potential harm
@@ -87,12 +88,25 @@ AI Terminal System
 
 3. **Use natural language commands**:
    ```bash
-   ai-os> open google chrome
    ai-os> create a file called test.txt
    ai-os> list files
    ```
 
-## 💡 Autosuggestion System
+## � System Monitoring Commands
+
+The AI Terminal includes built-in system monitoring tools:
+
+```bash
+ai-os> cpu          # Show CPU usage, cores, and frequency
+ai-os> mem          # Display memory usage statistics
+ai-os> ps           # List running processes with CPU/memory usage
+ai-os> disk         # Show disk usage information
+ai-os> network      # Display network I/O statistics
+ai-os> sysinfo      # Show system information (OS, Python version, hostname)
+ai-os> uptime       # Display system uptime
+```
+
+## �💡 Autosuggestion System
 
 ### Tab Completion (Linux/macOS)
 - Press `Tab` to see suggestions
@@ -136,6 +150,8 @@ ai-terminal/
 │   ├── ai/                 # AI processing (Gemini)
 │   ├── db/                 # Database operations
 │   └── utils/              # Utilities and kernel
+│       ├── kernel.py       # Command execution kernel
+│       └── monitor.py      # System monitoring tools
 ├── terminal/               # Terminal system
 │   ├── cli/               # Command line interface
 │   └── daemon/            # Background daemon

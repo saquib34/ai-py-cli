@@ -11,7 +11,7 @@ This document describes the organization and purpose of each directory in the AI
 - **`db/`** - Database operations (`history.py`)
 - **`utils/`** - Shared utilities
   - `kernel.py` - Command execution kernel
-  - `monitor.py` - System monitoring
+  - `monitor.py` - System monitoring tools (CPU, memory, processes, disk, network)
 
 ### `/terminal` - Terminal System
 - **`cli/`** - Command line interface (`cli.py`)
@@ -42,8 +42,19 @@ The AI Terminal consists of:
 2. **Daemon** - Background service for AI processing and command execution
 3. **Database** - SQLite database for command history and metadata
 4. **AI Integration** - Google Gemini for natural language command processing
+5. **System Monitoring** - Built-in tools for system resource monitoring
 
-## Development
+## System Monitoring Commands
+
+The terminal includes comprehensive system monitoring capabilities:
+
+- `cpu` - CPU usage, core count, and frequency information
+- `mem` - Memory usage statistics (used, total, available)
+- `ps` - List of running processes with CPU/memory usage
+- `disk` - Disk usage information for all mounted drives
+- `network` - Network I/O statistics (bytes sent/received)
+- `sysinfo` - System information (OS, Python version, hostname)
+- `uptime` - System uptime in days, hours, and minutes
 
 ### Adding New Features
 1. Core logic goes in `/core`

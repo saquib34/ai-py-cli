@@ -13,6 +13,13 @@ try:
 except ImportError:
     AI_AVAILABLE = False
 
+# Import system monitoring functions
+try:
+    from core.utils.monitor import cpu, mem, ps, disk, network, system_info, uptime
+    MONITOR_AVAILABLE = True
+except ImportError:
+    MONITOR_AVAILABLE = False
+
 class CommandKernel:
     """
     Intelligent command kernel that dynamically discovers available commands
@@ -55,6 +62,47 @@ class CommandKernel:
                 'handler': lambda: '\033[2J\033[H'
             }
         }
+
+        # Add system monitoring commands if available
+        if MONITOR_AVAILABLE:
+            monitoring_commands = {
+                'cpu': {
+                    'type': 'builtin',
+                    'description': 'Show CPU usage and information',
+                    'handler': lambda: cpu()
+                },
+                'mem': {
+                    'type': 'builtin',
+                    'description': 'Show memory usage statistics',
+                    'handler': lambda: mem()
+                },
+                'ps': {
+                    'type': 'builtin',
+                    'description': 'List running processes',
+                    'handler': lambda: ps()
+                },
+                'disk': {
+                    'type': 'builtin',
+                    'description': 'Show disk usage information',
+                    'handler': lambda: disk()
+                },
+                'network': {
+                    'type': 'builtin',
+                    'description': 'Show network I/O statistics',
+                    'handler': lambda: network()
+                },
+                'sysinfo': {
+                    'type': 'builtin',
+                    'description': 'Show system information',
+                    'handler': lambda: system_info()
+                },
+                'uptime': {
+                    'type': 'builtin',
+                    'description': 'Show system uptime',
+                    'handler': lambda: uptime()
+                }
+            }
+            self.available_commands.update(monitoring_commands)
 
     def discover_commands(self) -> Dict[str, dict]:
         """
