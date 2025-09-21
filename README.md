@@ -37,8 +37,9 @@ ai-os> ps
 ## ✨ Features
 
 - **🤖 AI-Powered Commands**: Natural language to shell command translation using Google Gemini
-- **� System Monitoring**: Built-in commands for CPU, memory, processes, disk, and network monitoring
-- **�📚 Smart Autosuggestion**: Database-driven command completion with history prioritization
+- **📊 System Monitoring**: Built-in commands for CPU, memory, processes, disk, and network monitoring
+- **💻 Web Frontend**: Modern React Next.js terminal interface with typing effects and multiple themes
+- **📚 Smart Autosuggestion**: Database-driven command completion with history prioritization
 - **🔄 Cross-Platform**: Works on Windows, Linux, and macOS
 - **💾 Persistent History**: SQLite database stores command history and execution results
 - **🛡️ Safety Checks**: AI validates commands for potential harm
@@ -65,49 +66,42 @@ AI Terminal System
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.7+
+- Python 3.7+ (for backend)
+- Node.js 18+ (for frontend)
 - Google Gemini API key
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd ai-terminal
+   git clone https://github.com/saquib34/ai-py-cli.git
+   cd ai-py-cli
    ```
 
-2. **Run the setup script for your platform**
-
-   **Windows:**
+2. **Backend Setup**
    ```bash
-   setup.sh
-   # or
-   bash scripts/setup.sh
-   ```
-
-   **Linux/macOS (Universal):**
-   ```bash
-   bash scripts/setup_unix.sh
-   ```
-
-   **Manual Setup:**
-   ```bash
+   # Install Python dependencies
    pip install -r requirements.txt
-   ```
 
-3. **Set up environment**
-   ```bash
-   # Create .env file
+   # Set up environment
    echo "GEMINI_API_KEY=your_api_key_here" > .env
    ```
 
-4. **Run setup (Windows)**
+3. **Frontend Setup** (Optional)
    ```bash
-   scripts\setup_windows.bat
+   # Navigate to frontend directory
+   cd frontend
+
+   # Install Node.js dependencies
+   npm install
+
+   # Return to root directory
+   cd ..
    ```
 
 ### Usage
 
+#### Backend Only (CLI)
 1. **Start the daemon** (in one terminal):
    ```bash
    python main.py daemon
@@ -118,10 +112,130 @@ AI Terminal System
    python main.py
    ```
 
-3. **Use natural language commands**:
+#### Full Stack (Web + Backend)
+1. **Start the backend daemon**:
    ```bash
-   ai-os> create a file called test.txt
-   ai-os> list files
+   python main.py daemon
+   ```
+
+2. **Start the web frontend** (in another terminal):
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. **Open browser**: `http://localhost:3000`
+
+#### Use natural language commands:
+```bash
+ai-os> create a file called test.txt
+ai-os> list files
+```
+
+## 🌐 Web Frontend Setup
+
+The AI Terminal includes a modern web-based interface built with React Next.js, featuring typing effects, multiple themes, and full customization.
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Frontend Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/saquib34/ai-py-cli.git
+   cd ai-py-cli/frontend
+   ```
+
+2. **Run the setup script**
+   ```bash
+   # For Windows
+   ..\scripts\setup_frontend.bat
+
+   # For Linux/macOS
+   ../scripts/setup_frontend.sh
+   ```
+
+3. **Or install manually**
+   ```bash
+   # Install Node.js dependencies
+   npm install
+   # or
+   yarn install
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. **Open your browser**
+   ```
+   http://localhost:3000
+   ```
+
+### Frontend Features
+
+- **🎨 Multiple Themes**: Dark, Light, Matrix, and Retro themes
+- **⚡ Typing Effects**: Realistic terminal typing animation
+- **🎯 Command History**: Navigate with arrow keys
+- **📝 Tab Completion**: Auto-complete common commands
+- **🔧 Fully Customizable**: Change prompts, fonts, and layouts
+- **📱 Responsive Design**: Works on desktop and mobile
+- **🎪 Fullscreen Mode**: Immersive terminal experience
+
+### Frontend Commands
+
+```bash
+# Basic commands
+help              # Show all available commands
+clear             # Clear the terminal
+history           # View command history
+echo <text>       # Display text
+date              # Show current date/time
+whoami            # Show current user
+
+# System monitoring
+cpu               # Display CPU information
+mem               # Show memory usage
+ps                # List running processes
+disk              # Display disk usage
+network           # Show network statistics
+sysinfo           # Display system information
+uptime            # Show system uptime
+
+# Customization
+theme <name>      # Change theme (dark, light, matrix, retro)
+prompt <text>     # Change command prompt
+fontsize <size>   # Change font size (10-24px)
+fullscreen        # Toggle fullscreen mode
+```
+
+### Connecting Frontend to Backend
+
+To connect the web frontend with the Python backend:
+
+1. **Start the Python daemon** (in one terminal):
+   ```bash
+   python main.py daemon
+   ```
+
+2. **Start the frontend** (in another terminal):
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. **Update API endpoints** in `frontend/src/components/Terminal.tsx`:
+   ```typescript
+   const response = await fetch('http://localhost:5000/api/command', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ command: args })
+   });
    ```
 
 ## � System Monitoring Commands
@@ -187,13 +301,19 @@ ai-terminal/
 ├── terminal/               # Terminal system
 │   ├── cli/               # Command line interface
 │   └── daemon/            # Background daemon
+├── frontend/               # React Next.js web interface
+│   ├── src/
+│   │   ├── app/           # Next.js app router
+│   │   └── components/    # React components
+│   ├── public/            # Static assets
+│   └── package.json       # Frontend dependencies
 ├── scripts/               # Setup scripts
 │   ├── setup.sh           # Cross-platform setup (Windows/macOS/Linux)
 │   └── setup_unix.sh      # Advanced Unix/Linux setup
 ├── docs/                  # Documentation
 ├── main.py                # Entry point
 ├── setup.sh              # Universal setup launcher
-├── requirements.txt       # Dependencies
+├── requirements.txt       # Python dependencies
 └── README.md             # This file
 ```
 
