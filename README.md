@@ -1,6 +1,38 @@
 # AI Terminal - Intelligent Command Line Interface
 
-A cross-platform AI-augmented terminal with intelligent command suggestions, natural language processing, and database-backed history.
+A cross-platform AI-augmented terminal w## 📊 System Monitoring Commands
+
+The AI Terminal includes built-in system monitoring tools powered by `psutil`:
+
+```bash
+ai-os> cpu              # Show CPU usage, cores, and frequency
+ai-os> mem              # Display memory usage statistics
+ai-os> ps               # List running processes with CPU/memory usage
+ai-os> disk             # Show disk usage information
+ai-os> network          # Display network I/O statistics
+ai-os> sysinfo          # Show system information (OS, Python version, hostname)
+ai-os> uptime           # Display system uptime
+```
+
+**Example Output:**
+```bash
+ai-os> cpu
+CPU Usage: 15.2%
+Cores: 8
+Frequency: 3200MHz
+
+ai-os> mem
+Memory: 45.2% used
+Used: 7.3GB
+Total: 16.0GB
+Available: 8.7GB
+
+ai-os> ps
+1: System (CPU: 0.1%, MEM: 0.2%)
+4: python.exe (CPU: 25.3%, MEM: 15.7%)
+1234: chrome.exe (CPU: 5.2%, MEM: 8.9%)
+...
+```nt command suggestions, natural language processing, and database-backed history.
 
 ## ✨ Features
 
