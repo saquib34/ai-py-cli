@@ -66,7 +66,6 @@ AI Terminal System
    ```bash
    # Create .env file
    echo "GEMINI_API_KEY=your_api_key_here" > .env
-   echo "JWT_SECRET_KEY=your_secret_key_here" >> .env
    ```
 
 4. **Run setup (Windows)**
@@ -122,7 +121,6 @@ ai-os> suggest <text>   # Get suggestions manually
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `GEMINI_API_KEY` | Google Gemini API key for AI features | Yes |
-| `JWT_SECRET_KEY` | Secret key for internal operations | Yes |
 
 ### Database
 

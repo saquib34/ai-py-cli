@@ -182,7 +182,6 @@ check_api_key() {
         print_info "No .env file found. Creating one..."
         echo "# AI Terminal Configuration" > .env
         echo "GEMINI_API_KEY=your-api-key-here" >> .env
-        echo "JWT_SECRET_KEY=your-secret-key-here" >> .env
         print_info "Created .env file. Please edit it with your actual API key."
     fi
 }
